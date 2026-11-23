@@ -1,0 +1,137 @@
+@Ecommerce_HostAddress = http://localhost:5217
+
+### ===============================
+### CATEGORY APIS
+### ===============================
+
+### Create Category
+POST {{Ecommerce_HostAddress}}/api/v1/category
+Content-Type: application/json
+
+{
+  "name": "Electronics"
+}
+
+### Get All Categories
+GET {{Ecommerce_HostAddress}}/api/v1/category
+
+### Get Category By Id
+GET {{Ecommerce_HostAddress}}/api/v1/category/1
+
+### Update Category
+PUT {{Ecommerce_HostAddress}}/api/v1/category/1
+Content-Type: application/json
+
+{
+  "name": "Consumer Electronics"
+}
+
+### Delete Category
+DELETE {{Ecommerce_HostAddress}}/api/v1/category/1
+
+### ===============================
+### PRODUCT APIS
+### ===============================
+
+### Create Product
+POST {{Ecommerce_HostAddress}}/api/v1/products
+Content-Type: application/json
+
+{
+  "title": "Mechanical Keyboard",
+  "price": 129.99,
+  "categoryId": 1,
+  "rating": "4.8",
+  "description": "RGB mechanical keyboard",
+  "imageUrl": "https://example.com/keyboard.jpg"
+}
+
+### Get All Products (Includes Reviews)
+GET {{Ecommerce_HostAddress}}/api/v1/products
+
+### Get Product By Id (Includes Reviews)
+GET {{Ecommerce_HostAddress}}/api/v1/products/1
+
+### Get Products By Category ID
+GET {{Ecommerce_HostAddress}}/api/v1/products/category/1
+
+### Get Product With Category Details (Includes Reviews)
+GET {{Ecommerce_HostAddress}}/api/v1/products/by-category/1
+
+### Update Product
+PUT {{Ecommerce_HostAddress}}/api/v1/products/1
+Content-Type: application/json
+
+{
+  "title": "Wireless Mechanical Keyboard",
+  "price": 149.99,
+  "categoryId": 1,
+  "rating": "4.9",
+  "description": "Upgraded wireless RGB mechanical keyboard",
+  "imageUrl": "https://example.com/keyboard-wireless.jpg"
+}
+
+### Delete Product
+DELETE {{Ecommerce_HostAddress}}/api/v1/products/1
+
+### ===============================
+### ORDER APIS
+### ===============================
+
+### Create Order
+POST {{Ecommerce_HostAddress}}/api/v1/order
+Content-Type: application/json
+
+{
+  "orderItems": [
+    {
+      "productId": 1,
+      "quantity": 2
+    }
+  ]
+}
+
+### Get All Orders (Paginated)
+GET {{Ecommerce_HostAddress}}/api/v1/order?page=1&pageSize=20
+
+### Get Order By Id
+GET {{Ecommerce_HostAddress}}/api/v1/order/1
+
+### Update Order
+PUT {{Ecommerce_HostAddress}}/api/v1/order/1
+Content-Type: application/json
+
+{
+  "orderItems": [
+    {
+      "productId": 1,
+      "quantity": 3
+    }
+  ]
+}
+
+### Delete Order
+DELETE {{Ecommerce_HostAddress}}/api/v1/order/1
+
+### ===============================
+### REVIEW APIS
+### ===============================
+
+### Create Review
+POST {{Ecommerce_HostAddress}}/api/v1/review
+Content-Type: application/json
+
+{
+  "message": "Excellent build quality and fast shipping!",
+  "rating": 5,
+  "productId": 1
+}
+
+### Update Review
+PUT {{Ecommerce_HostAddress}}/api/v1/review/1
+Content-Type: application/json
+
+{
+  "message": "Updated: after 3 months of use, still top-notch!",
+  "rating": 5
+}
